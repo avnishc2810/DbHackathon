@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 58" fill="none">
+  <defs><linearGradient id="blue" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#247FDD"/><stop offset="1" stop-color="#082B65"/></linearGradient></defs>
+  <g transform="translate(1 1)"><circle cx="28" cy="28" r="27" fill="#D9AE51"/><circle cx="28" cy="28" r="23" fill="url(#blue)" stroke="#F5D784" stroke-width="1.4"/><path d="M28 11 42 17v10.5c0 9.2-5.4 15.2-14 18.6-8.6-3.4-14-9.4-14-18.6V17l14-6Z" fill="#082553" stroke="#F3D47E" stroke-width="1.4"/><path d="m28 17 2.2 6.8h7.1l-5.8 4.2 2.2 6.8-5.7-4.2-5.7 4.2 2.2-6.8-5.8-4.2h7.1L28 17Z" fill="#65BEFF"/><circle cx="28" cy="28" r="18.5" stroke="#BCE3FF" stroke-dasharray="1.7 2.7" opacity=".7"/></g>
+  <text x="66" y="26" fill="#ECF7FF" font-family="Arial,sans-serif" font-size="19" font-weight="800" letter-spacing="3">CID</text><text x="67" y="42" fill="#79BCF6" font-family="Arial,sans-serif" font-size="8" font-weight="700" letter-spacing="1.6">SENTINEL</text>
+</svg>
