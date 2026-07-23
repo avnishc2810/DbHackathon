@@ -8,4 +8,4 @@ import Reports from './pages/Reports';
 import './styles.css';
 
 function App() { return <div className="app-shell"><Sidebar/><main className="app-main"><Routes><Route path="/" element={<Navigate to="/assess" replace/>}/><Route path="/assess" element={<Assess/>}/><Route path="/reports" element={<Reports/>}/><Route path="*" element={<Navigate to="/assess" replace/>}/></Routes></main></div> }
-createRoot(document.getElementById('root')).render(<BrowserRouter><App/></BrowserRouter>);
+createRoot(document.getElementById('root')).render(<BrowserRouter future={{v7_startTransition:true,v7_relativeSplatPath:true}}><App/></BrowserRouter>);

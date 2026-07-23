@@ -1,3 +1,11 @@
 import React from 'react';
-import { ArrowUpRight, FileText, Search } from 'lucide-react';
-export default function ReportCard({report,lookup,setLookup,onLookup}){const url=report?.downloadUrl||`${import.meta.env.VITE_BACKEND_URL||'http://localhost:8000'}${report?.report_url||''}`;return <section className="panel report-card"><div className="panel-title"><div><p>03</p><h2>Report vault</h2><small>Retrieve a finished assessment.</small></div><FileText className="accent"/></div><form className="lookup" onSubmit={onLookup}><Search size={16}/><input placeholder="Enter Test ID" value={lookup} onChange={e=>setLookup(e.target.value)}/><button><ArrowUpRight size={16}/></button></form>{report?<div className="report-summary"><p>SECURITY REPORT</p><h3>{report.test_id}</h3><small>{report.created_at}</small><div className="score"><span>RISK SCORE</span><b>{report.risk_score??'—'}<small>/100</small></b></div><a className="primary" target="_blank" rel="noreferrer" href={url}>View final PDF <ArrowUpRight size={16}/></a><div className="exports"><a href={url} download={`CID-${report.test_id}-security-report.pdf`}>DOWNLOAD PDF</a></div></div>:<div className="empty-mini"><FileText size={28}/><b>Your report will appear here</b><small>Complete a new assessment to retrieve its final PDF.</small></div>}</section>}
+import { Download, FileJson, Search } from 'lucide-react';
+
+export default function ReportCard({ report, lookup, setLookup, onLookup }) {
+  const download = () => {
+    const blob = new Blob([JSON.stringify(report.report, null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob); const link = document.createElement('a');
+    link.href = url; link.download = `CID-${report.test_id}-security-report.json`; link.click(); URL.revokeObjectURL(url);
+  };
+  return <section className="panel report-card"><div className="panel-title"><div><p>03</p><h2>Report vault</h2><small>View the completed assessment result.</small></div><FileJson className="accent"/></div><form className="lookup" onSubmit={onLookup}><Search size={16}/><input placeholder="Enter Job ID" value={lookup} onChange={event => setLookup(event.target.value)}/><button><Search size={15}/></button></form>{report ? <div className="report-summary"><p>FINAL ASSESSMENT REPORT</p><h3>{report.test_id}</h3><small>{report.created_at}</small><pre className="json-report">{JSON.stringify(report.report, null, 2)}</pre><button className="primary" onClick={download}><Download size={16}/>Download JSON report</button></div> : <div className="empty-mini"><FileJson size={28}/><b>Your report will appear here</b><small>Complete a new assessment to retrieve its final report.</small></div>}</section>;
+}
